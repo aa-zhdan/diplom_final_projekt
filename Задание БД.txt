@@ -1,0 +1,5 @@
+SELECT cur.login, COUNT(ord.id) AS sum_zakazy from "Couriers" AS cur LEFT OUTER JOIN "Orders" AS ord ON cur.id = ord."courierId" WHERE ord."inDelivery" = true GROUP BY cur.login;
+
+
+
+SELECT track, CASE WHEN finished=true THEN 2 WHEN cancelled=true THEN -1 WHEN "inDelivery"=true THEN 1 ELSE 0 END AS order_stat FROM "Orders";
